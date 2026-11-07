@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#253b32">
+  <title>CSSBuy spreadsheet – dansk guide til fund, mål og QC</title>
+  <meta name="description" content="Brug en CSSBuy spreadsheet med omtanke. Find kategorier, sammenlign størrelser, forstå QC-billeder og planlæg dit køb med en enkel dansk guide.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="da_DK">
+  <meta property="og:site_name" content="hipobuyfind.com">
+  <meta property="og:title" content="CSSBuy spreadsheet – fra inspiration til et velovervejet valg">
+  <meta property="og:description" content="En dansk guide til produktlinks, pasform, QC og det samlede budget. Begynd med en kategori og kontrollér detaljerne før køb.">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="CSSBuy spreadsheet – dansk indkøbsguide">
+  <meta name="twitter:description" content="Kategorier og praktiske råd til størrelser, produktbilleder og omkostninger.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%23253b32'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-family='Arial,sans-serif' font-weight='700' font-size='38' fill='%23efe9dc'%3Eh%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://static.nike.com" crossorigin>
+  <link rel="dns-prefetch" href="//assets.hermes.com">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f5f2ea;
+      --white: #fffdf8;
+      --ink: #253b32;
+      --muted: #62695f;
+      --line: #d9dace;
+      --accent: #a8462d;
+      --soft: #e7ebdf;
+      --radius: 18px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-text-size-adjust: 100%;
+    }
+    a { color: inherit; text-underline-offset: .22em; }
+    a:focus-visible, summary:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 5px;
+    }
+    img { display: block; width: 100%; height: auto; }
+    h1, h2, h3, p, figure { margin: 0; }
+    h1, h2, h3 { line-height: 1.13; }
+    h1 {
+      max-width: 760px;
+      font-size: clamp(2.7rem, 6.1vw, 5.9rem);
+      font-weight: 750;
+      letter-spacing: -.065em;
+      text-wrap: balance;
+    }
+    h2 {
+      font-size: clamp(1.8rem, 3.3vw, 3rem);
+      letter-spacing: -.045em;
+      text-wrap: balance;
+    }
+    h3 { font-size: 1.25rem; letter-spacing: -.025em; }
+    p + p { margin-top: 1rem; }
+    .wrap { width: min(1200px, calc(100% - 40px)); margin-inline: auto; }
+    .eyebrow {
+      display: block;
+      margin-bottom: 16px;
+      color: var(--accent);
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .masthead {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      min-height: 90px;
+      border-bottom: 1px solid var(--line);
+    }
+    .brand { text-decoration: none; font-weight: 850; font-size: 1.35rem; letter-spacing: -.05em; }
+    .masthead p { font-size: .82rem; color: var(--muted); text-align: right; }
+    .categories { padding: 25px 0 30px; border-bottom: 1px solid var(--line); }
+    .category-label { margin-bottom: 12px; font-weight: 700; font-size: .8rem; }
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 8px;
+    }
+    .category-grid a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      min-height: 49px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: var(--white);
+      font-size: .81rem;
+      font-weight: 650;
+      text-decoration: none;
+    }
+    .category-grid a::after { content: "↗"; color: var(--accent); }
+    .category-grid a:hover { background: var(--soft); border-color: var(--ink); }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 42px;
+      align-items: center;
+      padding: 60px 0;
+    }
+    .hero-copy > p { max-width: 590px; margin-top: 24px; color: var(--muted); font-size: 1.08rem; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      min-height: 50px;
+      padding: 13px 22px;
+      border-radius: 7px;
+      background: var(--ink);
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: .9rem;
+    }
+    .button:hover { background: #3b5547; }
+    .hero .button { margin-top: 28px; }
+    .hero small { display: block; margin-top: 15px; color: var(--muted); font-size: .76rem; }
+    .hero-figure { border-radius: var(--radius); overflow: hidden; background: #eeefed; }
+    .hero-figure img { aspect-ratio: 1; object-fit: contain; }
+    figcaption { padding: 16px 19px; font-size: .76rem; color: var(--muted); background: var(--white); }
+    .answer {
+      display: grid;
+      grid-template-columns: 230px 1fr;
+      gap: 30px;
+      padding: 30px;
+      border-radius: var(--radius);
+      background: var(--ink);
+      color: var(--white);
+    }
+    .answer h2 { font-size: 1.45rem; letter-spacing: -.02em; }
+    .answer p { max-width: 800px; color: #e3e8dd; }
+    .section { padding: 66px 0; border-bottom: 1px solid var(--line); }
+    .section-intro {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 35px;
+      margin-bottom: 30px;
+    }
+    .section-intro > p { max-width: 420px; color: var(--muted); font-size: .94rem; }
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+    .step { padding-top: 17px; border-top: 2px solid var(--ink); }
+    .step .number { display: block; margin-bottom: 22px; color: var(--accent); font-size: .82rem; font-weight: 800; }
+    .step p { margin-top: 12px; color: var(--muted); font-size: .91rem; }
+    .editorial { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .editorial figure { background: var(--white); border-radius: var(--radius); overflow: hidden; }
+    .editorial img { aspect-ratio: 4 / 3; object-fit: contain; background: #f0eee7; }
+    .editorial figcaption { padding: 24px; }
+    .editorial h3 { color: var(--ink); margin-bottom: 10px; }
+    .editorial p { font-size: .9rem; }
+    .editorial a { display: inline-block; margin-top: 15px; color: var(--accent); font-weight: 750; }
+    .note { margin-top: 20px; color: var(--muted); font-size: .8rem; }
+    .guides { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .guide { padding: 26px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); }
+    .guide .tag { color: var(--accent); font-size: .75rem; font-weight: 750; display: block; margin-bottom: 14px; }
+    .guide h3 { margin-bottom: 17px; }
+    .guide p, .guide li { color: var(--muted); font-size: .89rem; }
+    .guide ul { padding-left: 19px; margin: 17px 0 0; }
+    .guide li + li { margin-top: 8px; }
+    .table-box { overflow-x: auto; margin-top: 28px; border: 1px solid var(--line); border-radius: 10px; }
+    table { width: 100%; border-collapse: collapse; min-width: 560px; background: var(--white); text-align: left; }
+    caption { padding: 16px; text-align: left; font-weight: 750; background: var(--soft); }
+    th, td { padding: 15px 18px; border-bottom: 1px solid var(--line); vertical-align: top; font-size: .88rem; }
+    th { font-weight: 750; }
+    tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
+    td { color: var(--muted); }
+    .faq-layout { display: grid; grid-template-columns: .7fr 1.3fr; gap: 55px; }
+    .faq-heading p { margin-top: 20px; color: var(--muted); }
+    details { padding: 19px 0; border-bottom: 1px solid var(--line); }
+    details:first-child { padding-top: 0; }
+    summary { cursor: pointer; font-weight: 750; padding-right: 15px; }
+    details p { margin-top: 12px; color: var(--muted); font-size: .94rem; }
+    .closing {
+      padding: 40px;
+      margin: 48px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      border-radius: var(--radius);
+      background: var(--soft);
+    }
+    .closing h2 { font-size: 1.8rem; }
+    .closing p { margin-top: 10px; color: var(--muted); }
+    .closing .button { flex-shrink: 0; }
+    footer { padding: 0 0 35px; color: var(--muted); font-size: .78rem; }
+    footer p { max-width: 900px; }
+    footer .brand { display: inline-block; margin-bottom: 15px; color: var(--ink); font-size: 1.1rem; }
+    @media (max-width: 900px) {
+      .category-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .hero { gap: 25px; }
+      .steps { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+      .guides { grid-template-columns: 1fr; }
+      .answer { grid-template-columns: 1fr; gap: 15px; }
+      .faq-layout { grid-template-columns: 1fr; gap: 28px; }
+      .section-intro { align-items: flex-start; flex-direction: column; gap: 18px; }
+      .section-intro > p { max-width: 680px; }
+    }
+    @media (max-width: 600px) {
+      .wrap { width: calc(100% - 28px); }
+      .masthead { min-height: 76px; gap: 10px; }
+      .brand { font-size: 1.12rem; }
+      .masthead p { font-size: .68rem; max-width: 120px; }
+      .category-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .category-grid a { font-size: .73rem; }
+      .hero { grid-template-columns: 1fr; padding: 38px 0; gap: 30px; }
+      .hero-figure { max-width: 440px; width: 100%; margin-inline: auto; }
+      .hero-figure img { aspect-ratio: 4 / 3; }
+      .answer { padding: 25px; }
+      .section { padding: 44px 0; }
+      .editorial { grid-template-columns: 1fr; }
+      .closing { flex-direction: column; align-items: flex-start; padding: 27px; }
+      .step h3 { font-size: 1.08rem; }
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      a { transition: background-color .15s ease, border-color .15s ease; }
+    }
+    @media print {
+      body { background: white; color: black; }
+      .categories, .button { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-figure { display: none; }
+      .section, article, details { break-inside: avoid; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "#webpage",
+        "name": "CSSBuy spreadsheet – dansk guide til fund, mål og QC",
+        "description": "En uafhængig dansk introduktion til produktlinks, størrelser, QC-billeder og planlægning af det samlede budget.",
+        "inLanguage": "da",
+        "about": {
+          "@type": "Thing",
+          "name": "CSSBuy spreadsheet",
+          "description": "En organiseret oversigt over produktlinks til brug ved sammenligning og indkøbsresearch."
+        },
+        "hasPart": [
+          {"@id": "#artikel-pasform"},
+          {"@id": "#artikel-qc"},
+          {"@id": "#artikel-budget"},
+          {"@id": "#faq"}
+        ]
+      },
+      {
+        "@type": "Article",
+        "@id": "#artikel-pasform",
+        "headline": "Størrelsesguide: mål før du vælger",
+        "inLanguage": "da",
+        "description": "Sammenlign fodlængde, tøjmål og pasform med den konkrete vares størrelsestabel.",
+        "articleBody": "Start med noget, du allerede bruger og synes sidder godt. Mål det på en plan overflade, og sammenlign med den konkrete vares størrelsestabel. Til sko sammenligner du fodlængde og relevante indvendige mål. Til tøj sammenligner du brystvidde, længde og ærmer. Kontrollér, om tabellen viser kropsmål eller tøjets egne mål."
+      },
+      {
+        "@type": "Article",
+        "@id": "#artikel-qc",
+        "headline": "QC-billeder: bed om det, du mangler",
+        "inLanguage": "da",
+        "description": "Brug billeder til at kontrollere den valgte variant, synlige detaljer og relevante mål.",
+        "articleBody": "QC betyder kvalitetskontrol. Et billede kan hjælpe dig med at opdage en forkert farve, synlig skade eller manglende del. Det dokumenterer ikke alene ægthed, holdbarhed eller materialesammensætning. Kontrollér variant og antal, se efter synlige skader, og bed om nærbilleder eller målebilleder, hvis en vigtig detalje mangler."
+      },
+      {
+        "@type": "Article",
+        "@id": "#artikel-budget",
+        "headline": "Fragt og budget: regn på hele kurven",
+        "inLanguage": "da",
+        "description": "Vurder varepris, levering, gebyrer og mulige ekstra omkostninger samlet.",
+        "articleBody": "Vareprisen er kun ét led i budgettet. Skriv også indenrigsfragt, eventuelle servicegebyrer og international fragt ned, når beløbene er oplyst. Skeln mellem et fragtoverslag og et endeligt tilbud. Sammenlign ruter med samme destination og pakkeoplysninger, og kontrollér aktuelle vilkår for betaling, returnering og levering."
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "#faq",
+        "inLanguage": "da",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Hvad er en CSSBuy spreadsheet?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Det er en organiseret oversigt over produktlinks, ofte med kategorier, billeder og noter. Brug den til at finde og sammenligne varer; kontrollér derefter oplysningerne på den konkrete produktside."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Er denne side en officiel CSSBuy-tjeneste?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Nej. Dette er en uafhængig dansk guide. Kategorilinks fører til hipobuyfind.com, og øvrige navigationslinks fører til www.hipobuyfind.com. Siden håndterer ikke CSSBuy-konti eller ordrer."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Hvordan vælger jeg den rigtige størrelse?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Mål dine fødder eller et stykke tøj, der passer dig. Sammenlign med størrelsestabellen for præcis den vare og variant, du overvejer. Bogstaver som M og L er ikke tilstrækkelige alene."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Beviser QC-billeder, at en vare er ægte?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Nej. QC-billeder kan vise udseende, variant og synlige fejl, men er ikke i sig selv dokumentation for ægthed. Undersøg sælger, oprindelse og relevant dokumentation særskilt."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Kan jeg se den endelige pris her?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Nej. Denne guide viser ingen bindende priser. Kontrollér varepris, valuta, fragt, gebyrer og eventuelle øvrige omkostninger hos de relevante tjenester, før du betaler."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Er varerne på inspirationsbillederne til salg her?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Billederne er visuelle eksempler og dokumenterer ikke lagerstatus eller en konkret vare hos hipobuyfind.com. Åbn en kategori, og kontrollér den enkelte annonce."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+<link rel="canonical" href="https://kakobuyfinds.github.io/nyiiz/">
+</head>
+<body>
+  <!--
+    Filnavn: index.html
+    Researchgrundlag: 10 websøgeresultater for "CSSBuy spreadsheet".
+    Googles direkte resultatside kunne ikke tilgås; placeringer på Googles
+    første side er derfor ikke verificeret.
+
+    Selvstændig sammenfatning af søgeintentioner og SEO-temaer:
+    1. cssbuyhome.com — produktlinks, størrelser, QC og fragtguides.
+    2. cssbuysh.com — kategorier, sko, hættetrøjer og indkøbsforløb.
+    3. cssbuysspreadsheet.com — produktoversigt, kildehenvisninger og kategorifiltre.
+    4. rep.tools/guides/cssbuy-spreadsheet — produktlinkformater og sammenligning af lister.
+    5. cssbuyfind.com — katalog, produktbilleder og spørgsmål før køb.
+    6. cssbuymall.com — kategoribaserede fund og navigation.
+    7. cssbuyluxe.com — sammenligning og planlægning af omkostninger.
+    8. spreadsheetcssbuy.net — QC-fund og kategoriserede produktoversigter.
+    9. cssbuy.co.uk/guide/ — fra produktlink til kontrol og levering.
+    10. cssbuy.fit — sko, beklædning, hovedbeklædning og accessories.
+
+    Sekundære søgeord:
+    CSSBuy produktlinks; CSSBuy størrelsesguide;
+    CSSBuy QC-billeder; CSSBuy fragtguide.
+
+    Relaterede lange søgefraser, behandlet tematisk i sidens indhold:
+    hvad er en CSSBuy spreadsheet; CSSBuy spreadsheet på dansk;
+    sådan bruger du CSSBuy produktlinks; CSSBuy guide til begyndere;
+    CSSBuy spreadsheet til sko; CSSBuy spreadsheet til hættetrøjer;
+    CSSBuy spreadsheet til T-shirts; CSSBuy spreadsheet til jakker;
+    CSSBuy bukser og shorts; CSSBuy kasketter og hovedbeklædning;
+    CSSBuy matchende sæt; CSSBuy undertøj størrelser;
+    CSSBuy sportstrøjer pasform; CSSBuy accessories guide;
+    sammenlign størrelser før køb; mål fodlængde til sneakers;
+    sammenlign brystvidde på hættetrøjer; kontrollér ærmelængde på jakker;
+    hvordan læser man QC-billeder; QC-billeder af syninger;
+    kontrollér farve og variant; billeder og dokumentation for ægthed;
+    beregn samlet indkøbsbudget; forskel på varepris og fragt;
+    kontrollér produktlinkets destination; sammenlign fragtoverslag;
+    tjek returvilkår før betaling; kontrollér materialer i produktbeskrivelsen.
+  -->
+
+  <header class="wrap masthead">
+    <a class="brand" href="https://www.hipobuyfind.com" aria-label="Besøg hipobuyfind.com">hipobuyfind.com</a>
+    <p>Dansk indkøbsnotat<br>Fund · pasform · detaljer</p>
+  </header>
+
+  <main class="wrap">
+    <nav class="categories" aria-label="Produktkategorier">
+      <p class="category-label">Vælg en kategori · se udvalget hos hipobuyfind.com</p>
+      <div class="category-grid">
+        <a href="https://hipobuyfind.com/category-911-Shoes.html" aria-label="Sko – Shoes">Sko</a>
+        <a href="https://hipobuyfind.com/category-912-Hoodies%2FSweaters.html" aria-label="Hættetrøjer og strik – Hoodies/Sweaters">Hættetrøjer / strik</a>
+        <a href="https://hipobuyfind.com/category-913-T-Shirts.html">T-shirts</a>
+        <a href="https://hipobuyfind.com/category-914-Jackets.html" aria-label="Jakker – Jackets">Jakker</a>
+        <a href="https://hipobuyfind.com/category-915-Pants%2FShorts.html" aria-label="Bukser og shorts – Pants/Shorts">Bukser / shorts</a>
+        <a href="https://hipobuyfind.com/category-916-Headwear.html" aria-label="Hovedbeklædning – Headwear">Hovedbeklædning</a>
+        <a href="https://hipobuyfind.com/category-917-Sets.html" aria-label="Matchende sæt – Sets">Matchende sæt</a>
+        <a href="https://hipobuyfind.com/category-918-underwear%2Funderpants.html" aria-label="Undertøj – Underwear/underpants">Undertøj</a>
+        <a href="https://hipobuyfind.com/category-919-Jersey.html" aria-label="Sportstrøjer – Jersey">Sportstrøjer</a>
+        <a href="https://hipobuyfind.com/category-920-Accessories.html" aria-label="Tilbehør – Accessories">Tilbehør</a>
+      </div>
+    </nav>
+
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <span class="eyebrow">En mere overskuelig vej til dit næste fund</span>
+        <h1 id="hero-title">CSSBuy spreadsheet.<br>Find din stil.<br>Tjek detaljerne.</h1>
+        <p>Et godt produktlink er begyndelsen. Brug denne danske guide til at sammenligne pasform, læse billeder med omtanke og få styr på budgettet, før du beslutter dig.</p>
+        <a class="button" href="https://www.hipobuyfind.com">Udforsk produktoversigten <span aria-hidden="true">↗</span></a>
+        <small>Uafhængig guide. Katalogbesøg går til hipobuyfind.com.</small>
+      </div>
+      <figure class="hero-figure">
+        <img
+          src="https://static.nike.com/a/images/t_PDP_864_v1/f_auto,q_auto:eco/e6da41fa-1be4-4ce5-b89c-22be4f1f02d4/AIR+FORCE+1+%2707.png"
+          width="864"
+          height="864"
+          alt="Hvid Nike Air Force 1 '07 sneaker med lav profil og hvid sål"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async">
+        <figcaption>Stilreference: Nike Air Force 1 '07. Et inspirationsbillede, ikke en lager- eller salgserklæring.</figcaption>
+      </figure>
+    </section>
+
+    <section class="answer" aria-labelledby="answer-title">
+      <h2 id="answer-title">Hvad er en CSSBuy spreadsheet?</h2>
+      <p>En <strong>CSSBuy spreadsheet</strong> er en organiseret oversigt over produktlinks, ofte med kategorier, billeder og noter. Den hjælper dig med at finde muligheder. Den konkrete annonce skal stadig bekræfte størrelse, materiale, variant og aktuelle vilkår.</p>
+    </section>
+
+    <section class="section" aria-labelledby="process-title">
+      <div class="section-intro">
+        <div>
+          <span class="eyebrow">Før du går videre</span>
+          <h2 id="process-title">Fire små tjek.<br>Et bedre beslutningsgrundlag.</h2>
+        </div>
+        <p>Brug oversigten som en huskeliste. Den gør det lettere at skelne mellem noget, der ser interessant ud, og noget, du har oplysninger nok til at købe.</p>
+      </div>
+      <div class="steps">
+        <article class="step">
+          <span class="number">01 / FIND</span>
+          <h3>Begynd med kategorien</h3>
+          <p>Vælg sko, beklædning eller tilbehør. Et kategorilink viser en samling; du skal åbne en konkret vare for at undersøge dens detaljer.</p>
+        </article>
+        <article class="step">
+          <span class="number">02 / SAMMENLIGN</span>
+          <h3>Læs den valgte variant</h3>
+          <p>Kontrollér farve, størrelse og materiale. Et billede af én model fortæller ikke nødvendigvis, hvad alle valgmuligheder indeholder.</p>
+        </article>
+        <article class="step">
+          <span class="number">03 / UNDERSØG</span>
+          <h3>Spørg efter de manglende mål</h3>
+          <p>Brug relevante målebilleder og nærbilleder, hvor de tilbydes. Lad en uklar oplysning blive afklaret, før du godkender næste trin.</p>
+        </article>
+        <article class="step">
+          <span class="number">04 / BEREGN</span>
+          <h3>Se hele beløbet</h3>
+          <p>Notér varepris, levering og eventuelle gebyrer særskilt. Et tidligt overslag er ikke det samme som en endelig betalingsoversigt.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="style-title">
+      <div class="section-intro">
+        <div>
+          <span class="eyebrow">Materialer, proportioner og små detaljer</span>
+          <h2 id="style-title">Lad detaljerne styre valget.</h2>
+        </div>
+        <p>Brug mærkebilleder som inspiration til form og farve. Vurdér altid den konkrete annonce særskilt, også når dens billeder ligner en kendt model.</p>
+      </div>
+      <div class="editorial">
+        <figure>
+          <img
+            src="https://cuccuini.it/sync/foto/FW25---Gucci---7890164HBA89784.JPG"
+            width="700"
+            height="525"
+            loading="lazy"
+            decoding="async"
+            alt="Beige Gucci GG-kasket med mørkt monogram og grøn-rød stribe">
+          <figcaption>
+            <h3>Hovedbeklædning: mål omkredsen</h3>
+            <p>En Gucci-kasket er her et visuelt eksempel på mønster og proportioner. Ved dit eget valg bør du kontrollere hovedomkreds, justering og skyggeform frem for kun at vælge efter et produktfoto.</p>
+            <a href="https://hipobuyfind.com/category-916-Headwear.html">Se hovedbeklædning ↗</a>
+          </figcaption>
+        </figure>
+        <figure>
+          <img
+            src="https://assets.hermes.com/is/image/hermesproduct/bracciale-tonight--500041FJ0X-worn-1-0-0-1000-1000_g.jpg?wid=700&amp;qlt=75"
+            width="700"
+            height="525"
+            loading="lazy"
+            decoding="async"
+            alt="Orange Hermès Tonight-læderarmbånd med metalspænde vist på et håndled">
+          <figcaption>
+            <h3>Tilbehør: se på mål og lukning</h3>
+            <p>Et orange Hermès-armbånd viser, hvordan en lille detalje kan give farve. Undersøg håndledsmål, lukning og materialebeskrivelse, når du sammenligner armbånd eller andre accessories.</p>
+            <a href="https://hipobuyfind.com/category-920-Accessories.html">Se tilbehør ↗</a>
+          </figcaption>
+        </figure>
+      </div>
+      <p class="note">Billederne illustrerer stil og produktdetaljer. De dokumenterer ikke tilgængelighed, ægthed eller officiel tilknytning hos det katalog, der linkes til.</p>
+    </section>
+
+    <section class="section" aria-labelledby="guide-title">
+      <div class="section-intro">
+        <div>
+          <span class="eyebrow">Tre korte artikler</span>
+          <h2 id="guide-title">Fra produktlinks til praktiske valg.</h2>
+        </div>
+        <p>En CSSBuy guide til begyndere bør gøre spørgsmålene konkrete: Passer varen? Hvad viser billederne? Hvad indeholder det samlede beløb?</p>
+      </div>
+
+      <div class="guides">
+        <article class="guide" id="artikel-pasform" aria-labelledby="fit-title">
+          <span class="tag">01 · CSSBuy størrelsesguide</span>
+          <h3 id="fit-title">Størrelsesguide: mål før du vælger</h3>
+          <p>Start med noget, du allerede bruger og synes sidder godt. Mål det på en plan overflade, og sammenlign med den konkrete vares størrelsestabel.</p>
+          <p>Til sko sammenligner du fodlængde og relevante indvendige mål. Til tøj sammenligner du brystvidde, længde og ærmer. Kontrollér, om tabellen viser kropsmål eller tøjets egne mål.</p>
+          <ul>
+            <li><strong>Sneakers:</strong> notér fodlængde og behov for plads i bredden.</li>
+            <li><strong>Hættetrøjer og T-shirts:</strong> sammenlign brystvidde og samlet længde.</li>
+            <li><strong>Jakker:</strong> undersøg ærmelængde og plads til lag indenunder.</li>
+          </ul>
+        </article>
+
+        <article class="guide" id="artikel-qc" aria-labelledby="qc-title">
+          <span class="tag">02 · CSSBuy QC-billeder</span>
+          <h3 id="qc-title">QC-billeder: bed om det, du mangler</h3>
+          <p>QC betyder kvalitetskontrol. Et billede kan hjælpe dig med at opdage en forkert farve, synlig skade eller manglende del. Det dokumenterer ikke alene ægthed, holdbarhed eller materialesammensætning.</p>
+          <p>Kontrollér variant og antal, se efter synlige skader, og bed om nærbilleder eller målebilleder, hvis en vigtig detalje mangler.</p>
+          <ul>
+            <li><strong>Overblik:</strong> er det den bestilte model og farve?</li>
+            <li><strong>Detaljer:</strong> kan du se syninger, lukninger og begge sider?</li>
+            <li><strong>Mål:</strong> viser billedet tydeligt, hvor målebåndet starter?</li>
+          </ul>
+        </article>
+
+        <article class="guide" id="artikel-budget" aria-labelledby="budget-title">
+          <span class="tag">03 · CSSBuy fragtguide</span>
+          <h3 id="budget-title">Fragt og budget: regn på hele kurven</h3>
+          <p>Vareprisen er kun ét led i budgettet. Skriv også indenrigsfragt, eventuelle servicegebyrer og international fragt ned, når beløbene er oplyst.</p>
+          <p>Skeln mellem et fragtoverslag og et endeligt tilbud. Sammenlign ruter med samme destination og pakkeoplysninger, og kontrollér aktuelle vilkår for betaling, returnering og levering.</p>
+          <ul>
+            <li><strong>Valuta:</strong> notér hvilken valuta hvert beløb er oplyst i.</li>
+            <li><strong>Pakke:</strong> brug de mål og den vægt, tilbuddet kræver.</li>
+            <li><strong>Total:</strong> afklar mulige ekstra omkostninger før betaling.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="compare-title">
+      <span class="eyebrow">Et hurtigt sammenligningsværktøj</span>
+      <h2 id="compare-title">Hvad bør du kontrollere i hver kategori?</h2>
+      <div class="table-box" role="region" aria-label="Sammenligning af mål og oplysninger efter kategori" tabindex="0">
+        <table>
+          <caption>Brug samme målemetode, når du sammenligner varer</caption>
+          <thead>
+            <tr>
+              <th scope="col">Kategori</th>
+              <th scope="col">Start med</th>
+              <th scope="col">Afklar også</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Sko</th>
+              <td>Fodlængde og relevant størrelsestabel</td>
+              <td>Bredde, variant og billeder af begge sko</td>
+            </tr>
+            <tr>
+              <th scope="row">Hættetrøjer / T-shirts</th>
+              <td>Brystvidde og længde</td>
+              <td>Pasform, materiale og målemetode</td>
+            </tr>
+            <tr>
+              <th scope="row">Jakker</th>
+              <td>Brystvidde, skuldre og ærmer</td>
+              <td>Foring, lukninger og plads til flere lag</td>
+            </tr>
+            <tr>
+              <th scope="row">Bukser / shorts</th>
+              <td>Talje, hofte og benlængde</td>
+              <td>Elastik, stræk og placeringen af taljemålet</td>
+            </tr>
+            <tr>
+              <th scope="row">Hovedbeklædning</th>
+              <td>Hovedomkreds</td>
+              <td>Justering, dybde og skyggens form</td>
+            </tr>
+            <tr>
+              <th scope="row">Matchende sæt</th>
+              <td>Separate mål for overdel og underdel</td>
+              <td>Hvilke dele og størrelser der faktisk medfølger</td>
+            </tr>
+            <tr>
+              <th scope="row">Undertøj</th>
+              <td>Taljemål og materialebeskrivelse</td>
+              <td>Stræk, pakkens indhold og konkrete returvilkår</td>
+            </tr>
+            <tr>
+              <th scope="row">Sportstrøjer</th>
+              <td>Brystvidde og længde for den valgte version</td>
+              <td>Pasform, tryk og eventuelle tilvalg</td>
+            </tr>
+            <tr>
+              <th scope="row">Tilbehør</th>
+              <td>Længde, omkreds eller andre relevante mål</td>
+              <td>Materialer, lukninger og dokumentation</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">CSSBuy produktlinks kan være en indgang til research. Kontrollér linkets destination og den konkrete vare; en kategorioversigt er ikke i sig selv en bestillingsklar annonce.</p>
+    </section>
+
+    <section class="section faq-layout" id="faq" aria-labelledby="faq-title">
+      <div class="faq-heading">
+        <span class="eyebrow">Direkte svar</span>
+        <h2 id="faq-title">Det spørger mange om.</h2>
+        <p>Korte svar til dig, der vil forstå oversigten, før du går videre til en konkret vare.</p>
+      </div>
+      <div>
+        <details open>
+          <summary>Hvad er en CSSBuy spreadsheet?</summary>
+          <p>Det er en organiseret oversigt over produktlinks, ofte med kategorier, billeder og noter. Brug den til at finde og sammenligne varer; kontrollér derefter oplysningerne på den konkrete produktside.</p>
+        </details>
+        <details>
+          <summary>Er denne side en officiel CSSBuy-tjeneste?</summary>
+          <p>Nej. Dette er en uafhængig dansk guide. Kategorilinks fører til hipobuyfind.com, og øvrige navigationslinks fører til www.hipobuyfind.com. Siden håndterer ikke CSSBuy-konti eller ordrer.</p>
+        </details>
+        <details>
+          <summary>Hvordan vælger jeg den rigtige størrelse?</summary>
+          <p>Mål dine fødder eller et stykke tøj, der passer dig. Sammenlign med størrelsestabellen for præcis den vare og variant, du overvejer. Bogstaver som M og L er ikke tilstrækkelige alene.</p>
+        </details>
+        <details>
+          <summary>Beviser QC-billeder, at en vare er ægte?</summary>
+          <p>Nej. QC-billeder kan vise udseende, variant og synlige fejl, men er ikke i sig selv dokumentation for ægthed. Undersøg sælger, oprindelse og relevant dokumentation særskilt.</p>
+        </details>
+        <details>
+          <summary>Kan jeg se den endelige pris her?</summary>
+          <p>Nej. Denne guide viser ingen bindende priser. Kontrollér varepris, valuta, fragt, gebyrer og eventuelle øvrige omkostninger hos de relevante tjenester, før du betaler.</p>
+        </details>
+        <details>
+          <summary>Er varerne på inspirationsbillederne til salg her?</summary>
+          <p>Billederne er visuelle eksempler og dokumenterer ikke lagerstatus eller en konkret vare hos hipobuyfind.com. Åbn en kategori, og kontrollér den enkelte annonce.</p>
+        </details>
+      </div>
+    </section>
+
+    <aside class="closing" aria-labelledby="closing-title">
+      <div>
+        <h2 id="closing-title">Begynd med én kategori.</h2>
+        <p>Find en mulighed, sammenlign målene, og tag stilling til detaljerne.</p>
+      </div>
+      <a class="button" href="https://www.hipobuyfind.com">Besøg hipobuyfind.com <span aria-hidden="true">↗</span></a>
+    </aside>
+  </main>
+
+  <footer class="wrap">
+    <a class="brand" href="https://www.hipobuyfind.com">hipobuyfind.com</a>
+    <p>En dansk guide til CSSBuy spreadsheet og produktresearch. Ingen officiel tilknytning til CSSBuy, Nike, Gucci eller Hermès. Mærkenavne bruges til identifikation og inspiration. Produktbilleder leveres fra eksterne billedværter; aktuelle varer og vilkår skal kontrolleres på den relevante produktside.</p>
+  </footer>
+</body>
+</html>
